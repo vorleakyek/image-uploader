@@ -46,5 +46,5 @@
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },
-  "homepage": "https://{vorleakyek}.github.io/{image-uploader}"
+  "homepage": "https://vorleakyek.github.io/image-uploader"
 }
