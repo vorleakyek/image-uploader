@@ -14,18 +14,46 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: white; */
 }
 
 .App-link {
   color: #61dafb;
+}
+
+
+.header-container {
+  min-width: 100%;
+}
+
+.background {
+  height: 20vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: auto;
+  width: calc(100vw + 25vh);
+  object-fit:cover;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+@media screen and (max-width:376px) {
+  .background{
+    height: 25vh;
+  }
 }
 
 @keyframes App-logo-spin {
