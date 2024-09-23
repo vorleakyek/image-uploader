@@ -1,66 +1,184 @@
-.App {
+/* .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  /* background-color: #282c34; */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  /* color: white; */
-}
-
-.App-link {
-  color: #61dafb;
-}
-
+} */
 
 .header-container {
-  min-width: 100%;
+  /* width: 100%; */
+  position: relative;
 }
 
 .background {
-  height: 20vh;
-  width: 100vw;
-  position: relative;
+  height: 150px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   overflow: hidden;
 }
 
 .background-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  width: 100%;
   height: auto;
-  width: calc(100vw + 25vh);
   object-fit:cover;
-  transform: translate(-50%, -50%) rotate(-90deg);
+  transform: translate(-25%, -50%) rotate(-90deg);
 }
 
-@media screen and (max-width:376px) {
-  .background{
-    height: 25vh;
-  }
+.profile {
+  width:125px;
+  position: absolute;
+  top:75px;
+  left:15px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: white;
+  padding:3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.profile img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+
+.header-details {
+  position: absolute;
+  margin: 0;
+  padding: 10px;
+  top: 175px;
+  left:0;
+  color: black;
+  text-wrap: nowrap;
+
+}
+
+.mt-0{
+  margin-top: 0;
+}
+
+.profile-name {
+  margin: 0 0 20px 0;
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.username p,
+.workplace p,
+.gender p,
+.title p {
+  margin: 0 0 10px 0;
+  padding-right: 10px;
+}
+
+
+
+
+.username{
+  flex-basis: 20%;
+}
+
+.title {
+  flex-basis: 30%;
+}
+
+.workplace {
+  flex-basis: 40%;
+}
+
+.gender {
+  flex-basis: 10%;
+}
+
+
+.div-with-dot {
+  position: relative;
+  padding-right: 10px;
+}
+
+.div-with-dot::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  transform: translateY(-50%);
+  height: 3px;
+  width: 3px;
+  background-color: gray; /* Adjust color to match your needs */
+  border-radius: 50%; /* Make it a circle (dot) */
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+
+}
+
+
+@media screen and (max-width:375px) {
+ .background {
+    height: 100px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .profile {
+    top:55px;
+    width:75px;
+  }
+
+  .username p,
+  .workplace p,
+  .gender p,
+  .title p {
+    margin: 0 0 10px 0;
+  }
+
+
+/* .flex-row {
+  display: flex;
+  flex-direction: row;
+
+} */
+
+}
+
+@media screen and (min-width:768px) {
+  .background {
+    height: 100px;
+  }
+
+  .profile {
+    top:55px;
+    width:75px;
+  }
+
+
+
+  .flex {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .details-info {
+  flex-direction: row;
+}
+
+  .div-with-dot-lg-screen {
+    position: relative;
+    padding-right: 10px;
+  }
+
+  .div-with-dot-lg-screen::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    transform: translateY(-50%);
+    height: 3px;
+    width: 3px;
+    background-color: gray; /* Adjust color to match your needs */
+    border-radius: 50%; /* Make it a circle (dot) */
   }
 }
