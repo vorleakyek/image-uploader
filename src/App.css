@@ -1,14 +1,20 @@
-/* .App {
-  text-align: center;
-} */
-
 .header-container {
   /* width: 100%; */
   position: relative;
 }
 
+.flag {
+  width: 16px;
+  margin-right: 10px;
+}
+
+.work-icon {
+  vertical-align:text-bottom;
+  color: blue;
+}
+
 .background {
-  height: 150px;
+  height: 125px;
   width: 100%;
   position: absolute;
   top: 0;
@@ -24,9 +30,9 @@
 }
 
 .profile {
-  width:125px;
+  width:115px;
   position: absolute;
-  top:75px;
+  top:55px;
   left:15px;
   border-radius: 50%;
   aspect-ratio: 1;
@@ -46,7 +52,7 @@
   position: absolute;
   margin: 0;
   padding: 10px;
-  top: 175px;
+  top: 185px;
   left:0;
   color: black;
   text-wrap: nowrap;
@@ -75,8 +81,6 @@
 }
 
 
-
-
 .username{
   flex-basis: 20%;
 }
@@ -91,6 +95,10 @@
 
 .gender {
   flex-basis: 10%;
+}
+
+.gray{
+  color: #525252;
 }
 
 
@@ -117,14 +125,14 @@
 
 }
 
-
-@media screen and (max-width:375px) {
- .background {
-    height: 100px;
+/*mobile*/
+@media screen and (max-width: 768px) {
+  .background {
+    height: 110px;
   }
 
   .profile {
-    top:55px;
+    top:65px;
     width:75px;
   }
 
@@ -135,26 +143,19 @@
     margin: 0 0 10px 0;
   }
 
+  p {
+    font-size: 16px;
+  }
 
-/* .flex-row {
-  display: flex;
-  flex-direction: row;
-
-} */
+  .header-details {
+    top: 155px;
+  }
 
 }
 
-@media screen and (min-width:768px) {
-  .background {
-    height: 100px;
-  }
 
-  .profile {
-    top:55px;
-    width:75px;
-  }
-
-
+/*Tablet*/
+@media screen and (min-width: 768px) {
 
   .flex {
     display: flex;
@@ -162,8 +163,8 @@
   }
 
   .details-info {
-  flex-direction: row;
-}
+    flex-direction: row;
+  }
 
   .div-with-dot-lg-screen {
     position: relative;
@@ -178,7 +179,7 @@
     transform: translateY(-50%);
     height: 3px;
     width: 3px;
-    background-color: gray; /* Adjust color to match your needs */
-    border-radius: 50%; /* Make it a circle (dot) */
+    background-color: gray;
+    border-radius: 50%;
   }
 }
