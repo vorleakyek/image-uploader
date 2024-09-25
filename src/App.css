@@ -1,5 +1,6 @@
-.header-container {
-  /* width: 100%; */
+/******* Homepage ****/
+
+.header-container, .main {
   position: relative;
 }
 
@@ -56,11 +57,14 @@
   left:0;
   color: black;
   text-wrap: nowrap;
-
 }
 
 .mt-0{
   margin-top: 0;
+}
+
+.modal-title {
+  margin: 0 0 5px 0;
 }
 
 .profile-name {
@@ -79,7 +83,6 @@
   margin: 0 0 10px 0;
   padding-right: 10px;
 }
-
 
 .username{
   flex-basis: 20%;
@@ -101,7 +104,6 @@
   color: #525252;
 }
 
-
 .div-with-dot {
   position: relative;
   padding-right: 10px;
@@ -115,14 +117,86 @@
   transform: translateY(-50%);
   height: 3px;
   width: 3px;
-  background-color: gray; /* Adjust color to match your needs */
-  border-radius: 50%; /* Make it a circle (dot) */
+  background-color: gray;
+  border-radius: 50%;
 }
 
 .flex-row {
   display: flex;
   flex-direction: row;
+}
 
+.upload-button {
+  position: absolute;
+  top: 135px;
+  right:20px;
+}
+
+/******** Upload Images ******/
+.overlay {
+  position: absolute;
+  width:100vw;
+  height:100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.upload-img-modal {
+  position: fixed;
+  z-index: 2;
+  top:50%;
+  left:50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  border-radius: 10px;
+  width:80%;
+}
+
+.drop-zone {
+  background-color:#F9F9F9;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.x-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: white;
+  border:none;
+}
+
+.upload-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-file {
+  border-radius: 50%;
+  padding: 10px;
+  background-color: white;
+  font-size: 24px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid rgb(218, 214, 214);
+}
+
+.modal-content {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.bold {
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.input-tag {
+  display: none;
 }
 
 /*mobile*/
@@ -151,12 +225,15 @@
     top: 155px;
   }
 
+  .upload-button {
+    top: 115px;
+    right: 10px;
+  }
 }
 
 
 /*Tablet*/
 @media screen and (min-width: 768px) {
-
   .flex {
     display: flex;
     flex-direction: row;
