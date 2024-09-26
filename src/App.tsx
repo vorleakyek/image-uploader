@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import { FaWebflow } from "react-icons/fa6";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
@@ -8,16 +8,34 @@ import coverImage from './img/cover.jpg';
 import profile from './img/pika.png';
 
 function App() {
+
+  const [showModal, setShowModal] = useState<string>("hidden");
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  function handleUploadFiles() {
+
+  function handleShowModal() {
+    showModal === '' ? setShowModal('hidden') : setShowModal('');
+  }
+
+  function handleClick() {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   }
 
+  function handleUploadFiles(event: React.ChangeEvent<HTMLInputElement>){
+    const file = event.target.files?.[0];
+    if (file) {
+      const newFiles = [...uploadedFiles];
+      newFiles.push(file);
+      setUploadedFiles(newFiles);
+    }
+    event.target.value = '';
+  }
+
   return (
     <div className="main">
-      <div className="overlay hidden"></div>
+      <div className={`overlay ${showModal}`}></div>
       <header>
         <div className="header-container">
           <div className="background">
@@ -28,7 +46,7 @@ function App() {
           </div>
         </div>
         <div className="upload-button">
-          <button>Update picture</button>
+          <button onClick={handleShowModal}>Update picture</button>
         </div>
         <div className="header-details">
           <div className='detais-info'>
@@ -58,15 +76,18 @@ function App() {
         </div>
       </header>
 
-      <div className="upload-img-modal">
+      <div className={`upload-img-modal ${showModal}`}>
         <h2 className="modal-title">Upload image(s)</h2>
         <p className="mt-0 gray">You may upload up to 5 images</p>
+        <div>
+          {uploadedFiles[0] && <p>uploaded Files: {uploadedFiles[0].name}</p>}
+        </div>
         <div className="drop-zone">
           <div className="upload-btn-wrapper">
-            <button className="upload-file" onClick={handleUploadFiles} >
+            <button className="upload-file" onClick={handleClick} >
               <FaCloudUploadAlt/>
             </button>
-            <input ref={fileInputRef} className="input-tag" type="file" accept=".jpg, .jpeg, png" />
+            <input ref={fileInputRef} className="input-tag" type="file" accept=".jpg, .jpeg, png" onChange={handleUploadFiles} />
           </div>
           <div className="modal-content">
             <p className="bold">Click or drag and drop to upload</p>
@@ -74,7 +95,7 @@ function App() {
           </div>
         </div>
         <div>
-          <button className="x-btn"><FaX/></button>
+          <button className="x-btn" onClick={handleShowModal}><FaX/></button>
         </div>
 
       </div>
