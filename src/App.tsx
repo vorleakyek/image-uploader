@@ -7,10 +7,20 @@ import './App.css';
 import coverImage from './img/cover.jpg';
 import profile from './img/pika.png';
 
+import ImageRows from "./components/ImageRows";
+
 function App() {
 
+  interface FileWithImgURL {
+    name: string;
+    size: number;
+    type: string;
+    imageURL: string;
+  }
+
   const [showModal, setShowModal] = useState<string>("hidden");
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<FileWithImgURL[]>([]);
+  // const [imageURLs, setImageURLs] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   function handleShowModal() {
@@ -26,11 +36,20 @@ function App() {
   function handleUploadFiles(event: React.ChangeEvent<HTMLInputElement>){
     const file = event.target.files?.[0];
     if (file) {
-      const newFiles = [...uploadedFiles];
-      newFiles.push(file);
+
+      const imageURL = URL.createObjectURL(file);
+      const newFileObject: FileWithImgURL = {
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        imageURL
+      };
+      console.log(newFileObject);
+      const newFiles = [...uploadedFiles, newFileObject];
       setUploadedFiles(newFiles);
+      event.target.value = '';
     }
-    event.target.value = '';
+
   }
 
   return (
@@ -79,9 +98,7 @@ function App() {
       <div className={`upload-img-modal ${showModal}`}>
         <h2 className="modal-title">Upload image(s)</h2>
         <p className="mt-0 gray">You may upload up to 5 images</p>
-        <div>
-          {uploadedFiles[0] && <p>uploaded Files: {uploadedFiles[0].name}</p>}
-        </div>
+
         <div className="drop-zone">
           <div className="upload-btn-wrapper">
             <button className="upload-file" onClick={handleClick} >
@@ -96,6 +113,10 @@ function App() {
         </div>
         <div>
           <button className="x-btn" onClick={handleShowModal}><FaX/></button>
+        </div>
+
+        <div>
+          <ImageRows files={uploadedFiles} />
         </div>
 
       </div>
