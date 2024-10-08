@@ -33,10 +33,9 @@ function App() {
     }
   }
 
-  function handleUploadFiles(event: React.ChangeEvent<HTMLInputElement>){
-    const file = event.target.files?.[0];
-    if (file) {
 
+  const appendFile = (file: File) => {
+    if (file) {
       const imageURL = URL.createObjectURL(file);
       const newFileObject: FileWithImgURL = {
         name: file.name,
@@ -47,10 +46,27 @@ function App() {
       console.log(newFileObject);
       const newFiles = [...uploadedFiles, newFileObject];
       setUploadedFiles(newFiles);
+    }
+  }
+
+  function handleUploadFiles(event: React.ChangeEvent<HTMLInputElement>){
+    if (event.target.files) {
+      const file = event.target.files?.[0];
+      if (uploadedFiles.length < 5) { appendFile(file); }
       event.target.value = '';
     }
 
   }
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event?.preventDefault();
+    const file = event.dataTransfer.files[0];
+    if (uploadedFiles.length < 5) {appendFile(file);}
+  }
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault(); // This prevents default behavior (like opening the file)
+  };
 
   return (
     <div className="main">
@@ -106,7 +122,7 @@ function App() {
             </button>
             <input ref={fileInputRef} className="input-tag" type="file" accept=".jpg, .jpeg, png" onChange={handleUploadFiles} />
           </div>
-          <div className="modal-content">
+          <div className="modal-content" onDrop={handleDrop} onDragOver={handleDragOver} >
             <p className="bold">Click or drag and drop to upload</p>
             <p className="gray">PNG, or JPG (Max 5MB)</p>
           </div>
@@ -116,7 +132,7 @@ function App() {
         </div>
 
         <div>
-          <ImageRows files={uploadedFiles} />
+          <ImageRows files={uploadedFiles} setUploadedFiles={setUploadedFiles} />
         </div>
 
       </div>

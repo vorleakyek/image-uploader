@@ -1,11 +1,8 @@
 import ImageRow from "./ImageRow";
 
-// interface FileWithImgURL extends File {
-//   imageURL: string;
-// }
-
-type ImageRowsProps = {
+export type ImageRowsProps = {
   files: FileWithImgURL[];
+  setUploadedFiles: React.Dispatch<React.SetStateAction<FileWithImgURL[]>>;
 }
 
 interface FileWithImgURL {
@@ -15,10 +12,10 @@ interface FileWithImgURL {
   imageURL: string;
 }
 
-export default function ImageRows({files}:ImageRowsProps) {
+export default function ImageRows({ files, setUploadedFiles }:ImageRowsProps) {
   return(
     <>
-      {files.map(file => <ImageRow key={file.imageURL} file={file}/>)}
+      {files.map(file => <ImageRow key={file.imageURL} file={file} files={files} setUploadedFiles={setUploadedFiles} />)}
     </>
 
   )

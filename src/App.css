@@ -153,6 +153,9 @@
   padding: 15px;
   border-radius: 10px;
   width:60%;
+  min-height: 35vh;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .drop-zone {
@@ -207,6 +210,8 @@
 
 .image-row-wrapper {
   display: flex;
+  margin-bottom: 5px;
+  overflow: hidden;
 }
 
 .image-row {
@@ -289,7 +294,7 @@
     right: 10px;
   }
 
-  .upload-img-modal{
+  .upload-img-modal {
     width: 80%;
   }
 }
