@@ -262,6 +262,26 @@
 }
 
 
+/**********Crop image modal***********/
+.crop-img-modal {
+  position: absolute;
+  top:0;
+  left:0;
+  background-color: white;
+  transform: translate(50%, 50%);
+  padding: 15px;
+  border-radius: 10px;
+  width:35%;
+  z-index: 3;
+
+}
+
+.crop-img-modal img {
+  width: 70%;
+  height:70%;
+}
+
+
 
 /*mobile*/
 @media screen and (max-width: 768px) {

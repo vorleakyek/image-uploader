@@ -5,6 +5,9 @@ type ImageRowProps = {
   file: FileWithImgURL;
   files: FileWithImgURL[];
   setUploadedFiles: React.Dispatch<React.SetStateAction<FileWithImgURL[]>>;
+  setShowCrop: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentCropImg: React.Dispatch<React.SetStateAction<FileWithImgURL | null>>;
+
 }
 
 interface FileWithImgURL {
@@ -15,7 +18,7 @@ interface FileWithImgURL {
 }
 
 
-export default function ImageRow({ file, files, setUploadedFiles }: ImageRowProps) {
+export default function ImageRow({ file, files, setUploadedFiles, setShowCrop, setCurrentCropImg }: ImageRowProps) {
 
   const sizeInBytes = file.size;
   const sizeInKB = sizeInBytes / 1024;
@@ -33,6 +36,11 @@ export default function ImageRow({ file, files, setUploadedFiles }: ImageRowProp
     setUploadedFiles(updatedFilesArray);
   }
 
+  const handleCrop = () => {
+    setShowCrop("");
+    setCurrentCropImg(file);
+  }
+
   return(
     <div className="image-row-wrapper">
       <div className="image-row">
@@ -44,7 +52,7 @@ export default function ImageRow({ file, files, setUploadedFiles }: ImageRowProp
           <p className="img-size">{size}</p>
         </div>
         <div className="img-action">
-          <div className="crop div-with-dot"> <button> <span className="icon"><FaCropSimple /></span>Crop image</button> </div>
+          <div className="crop div-with-dot"> <button onClick={handleCrop}> <span className="icon"><FaCropSimple /></span>Crop image</button> </div>
           <div className="delete"><button onClick={handleDelete}> <span className="icon"><FaRegTrashCan /></span>Delete</button></div>
         </div>
       </div>

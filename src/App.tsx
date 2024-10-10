@@ -1,4 +1,6 @@
 import React, {useRef, useState} from "react";
+// import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css'
 import { FaWebflow } from "react-icons/fa6";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
@@ -6,8 +8,10 @@ import flag from "./img/canada-flag-icon.svg";
 import './App.css';
 import coverImage from './img/cover.jpg';
 import profile from './img/pika.png';
-
 import ImageRows from "./components/ImageRows";
+
+import ImageCrop from "./components/ImageCrop";
+
 
 function App() {
 
@@ -19,7 +23,9 @@ function App() {
   }
 
   const [showModal, setShowModal] = useState<string>("hidden");
+  const [showCrop, setShowCrop] = useState<string>("hidden");
   const [uploadedFiles, setUploadedFiles] = useState<FileWithImgURL[]>([]);
+  const [currentCropImg, setCurrentCropImg] = useState<FileWithImgURL | null>(null);
   // const [imageURLs, setImageURLs] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -120,7 +126,7 @@ function App() {
             <button className="upload-file" onClick={handleClick} >
               <FaCloudUploadAlt/>
             </button>
-            <input ref={fileInputRef} className="input-tag" type="file" accept=".jpg, .jpeg, png" onChange={handleUploadFiles} />
+            <input ref={fileInputRef} className="input-tag" type="file" accept=".jpg,.jpeg,png" onChange={handleUploadFiles} />
           </div>
           <div className="modal-content" onDrop={handleDrop} onDragOver={handleDragOver} >
             <p className="bold">Click or drag and drop to upload</p>
@@ -132,9 +138,13 @@ function App() {
         </div>
 
         <div>
-          <ImageRows files={uploadedFiles} setUploadedFiles={setUploadedFiles} />
+          <ImageRows files={uploadedFiles} setUploadedFiles={setUploadedFiles} setShowCrop={setShowCrop} setCurrentCropImg={setCurrentCropImg}/>
         </div>
 
+      </div>
+
+      <div className={`crop-img-modal ${showCrop}`}>
+        <ImageCrop src={currentCropImg ? currentCropImg.imageURL : ''} setShowCrop={setShowCrop} />
       </div>
     </div>
   );
