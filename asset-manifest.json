@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/image-uploader/static/css/main.e05ae1c7.css",
-    "main.js": "/image-uploader/static/js/main.5855521a.js",
+    "main.css": "/image-uploader/static/css/main.44ada8f9.css",
+    "main.js": "/image-uploader/static/js/main.2640c45f.js",
     "static/js/453.ed3810f9.chunk.js": "/image-uploader/static/js/453.ed3810f9.chunk.js",
     "static/media/pika.png": "/image-uploader/static/media/pika.f0bd84ab8d1884e2b75a.png",
     "static/media/cover.jpg": "/image-uploader/static/media/cover.add8999aa6269e172584.jpg",
     "static/media/canada-flag-icon.svg": "/image-uploader/static/media/canada-flag-icon.00e59a1ef5bc81b7aa2e80005dfc90d6.svg",
     "index.html": "/image-uploader/index.html",
-    "main.e05ae1c7.css.map": "/image-uploader/static/css/main.e05ae1c7.css.map",
-    "main.5855521a.js.map": "/image-uploader/static/js/main.5855521a.js.map",
+    "main.44ada8f9.css.map": "/image-uploader/static/css/main.44ada8f9.css.map",
+    "main.2640c45f.js.map": "/image-uploader/static/js/main.2640c45f.js.map",
     "453.ed3810f9.chunk.js.map": "/image-uploader/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e05ae1c7.css",
-    "static/js/main.5855521a.js"
+    "static/css/main.44ada8f9.css",
+    "static/js/main.2640c45f.js"
   ]
 }
